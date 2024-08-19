@@ -27,5 +27,4 @@ class Product(ProductBase):
     model_config = ConfigDict(
         from_attributes=True
     )  # Automatically determine attributes with their values
-
     id: int

@@ -11,7 +11,7 @@ router = APIRouter(tags=["Products"])
 @router.get("/", response_model=list[Product])
 async def get_products(
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
-):
+) -> list[Product]:
     """
     Get all products
     """
@@ -20,13 +20,13 @@ async def get_products(
 
 @router.post(
     "/",
-    response_model=Product,
+    # response_model=Product,
     status_code=status.HTTP_201_CREATED,
 )
 async def create_product(
     product_in: ProductCreate,
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
-):
+) -> Product:
     """
     Create a new product
     """
@@ -37,7 +37,7 @@ async def create_product(
 async def get_product(
     product_id: int,
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
-):
+) -> Product:
     """
     Get a product by ID
     """

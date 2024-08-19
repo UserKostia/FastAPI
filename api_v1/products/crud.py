@@ -51,4 +51,5 @@ async def create_product(session: AsyncSession, product_in: ProductCreate) -> Pr
     session.add(product)
     await session.commit()
     # await session.refresh(product) # use this if you need to update the product object with the auto-generated ID
+    print(f"{product = }")
     return product
